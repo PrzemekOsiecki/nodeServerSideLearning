@@ -6,8 +6,9 @@ import mongoose from 'mongoose';
 import logger from 'morgan';
 
 import swaggerUi from 'swagger-ui-express';
-
 import swaggerDocument from '../src/config/swagger.json';
+
+import cors from 'cors';
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/invoice-builder');
@@ -16,6 +17,7 @@ mongoose.connect('mongodb://localhost/invoice-builder');
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json({extended:true})); //BodyParser 
 app.use(express.urlencoded({extended:true})); //parsing url parameters 
 

@@ -48,6 +48,20 @@
                 "tags": ["Invoices"],
                 "summary": "Find all Invoices from the server",
                 "description": "All invoices",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "type": "integer",
+                        "description": "The page you want to see",
+                        "in": "query"
+                    },
+                    {
+                        "name": "perPage",
+                        "type": "integer",
+                        "description": "Define the limit of the records",
+                        "in": "query"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Ok",
@@ -179,8 +193,24 @@
             }
         },
         "Invoices": {
-            "type": "array",
-            "$ref": "#definitions/Invoice"
+            "Properties": {
+                "docs": {
+                    "type": "array",
+                    "$ref": "#definitions/Invoice"
+                },
+                "total": {
+                    "type": "integer"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "pages": {
+                    "type": "integer"
+                },
+                "limit": {
+                    "type": "integer"
+                }
+            }
         }
     }
 }

@@ -4,9 +4,16 @@ import HttpStatus from 'http-status-codes';
 
 export default {
     
-    findAll(req, res, next) {
-       Invoice.find().then(invoices => res.json(invoices))
-       .catch(err => 
+    findAll(req, res, next) { 
+       const {page, perPage = 10} = req.query; 
+       const options = {
+            //select: '_id, item',
+            page: parseInt(page, 10),
+            perPage: parseInt(perPage, 10)
+       };
+       Invoice.paginate({}, options)//.find()
+       .then(invoices => res.json(invoices))
+       .catch(err =>
             res.status(HttpStatus.INTERNAL_SERVER_ERROR)
             .json(err))
             .catch(err => 
