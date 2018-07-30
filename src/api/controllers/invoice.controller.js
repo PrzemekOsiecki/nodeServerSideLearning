@@ -5,12 +5,25 @@ import HttpStatus from 'http-status-codes';
 export default {
     
     findAll(req, res, next) { 
-       const {page, perPage = 10} = req.query; 
+       const {page, perPage = 10, filter, sortField, sortDir} = req.query; 
        const options = {
             //select: '_id, item',
             page: parseInt(page, 10),
-            perPage: parseInt(perPage, 10)
+            limit: parseInt(perPage, 10)
        };
+
+       const query = {};
+       if(filter) {
+           query.item = {
+               $regex: filter
+           }
+       }
+       if(sortField && sortDir) {
+        options.sort = {
+            [sortField]: sortDir,
+        }
+       }
+
        Invoice.paginate({}, options)//.find()
        .then(invoices => res.json(invoices))
        .catch(err =>

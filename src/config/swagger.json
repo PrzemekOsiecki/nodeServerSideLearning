@@ -60,6 +60,24 @@
                         "type": "integer",
                         "description": "Define the limit of the records",
                         "in": "query"
+                    },
+                    {
+                        "name": "filter",
+                        "type": "string",
+                        "description": "Filter the invoies by item name",
+                        "in": "query"
+                    },
+                    {
+                        "name": "sortField",
+                        "type": "string",
+                        "description": "Define the sort field for sorting i.e. item, date, due",
+                        "in": "query"
+                    },
+                    {
+                        "name": "sortDir",
+                        "type": "string",
+                        "description": "Define the sort direction i.e. desc, asc",
+                        "in": "query"
                     }
                 ],
                 "responses": {
