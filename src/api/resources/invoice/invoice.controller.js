@@ -1,4 +1,4 @@
-import Invoice from '../models/invoice.model';
+import Invoice from './invoice.model';
 import Joi from 'joi';
 import HttpStatus from 'http-status-codes';
 

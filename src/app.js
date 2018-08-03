@@ -1,6 +1,6 @@
 //const express = require('express');
 import express from 'express';
-import {router} from './config/routes'
+
 
 import mongoose from 'mongoose';
 import logger from 'morgan';
@@ -9,6 +9,7 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../src/config/swagger.json';
 
 import cors from 'cors';
+import { restRouter } from './api';
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/invoice-builder');
@@ -23,7 +24,7 @@ app.use(express.urlencoded({extended:true})); //parsing url parameters
 
 app.use(logger('dev')); //other option is for example: combined
 
-app.use('/api', router);
+app.use('/api', restRouter);
 
 app.use('/api-docs', swaggerUi.serve, 
 swaggerUi.setup(swaggerDocument, {
