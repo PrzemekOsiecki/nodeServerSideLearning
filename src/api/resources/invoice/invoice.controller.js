@@ -58,7 +58,8 @@ export default {
             due: Joi.date().required(),
             qty: Joi.number().integer().required(),
             tax: Joi.number().optional(),
-            rate: Joi.number().optional()
+            rate: Joi.number().optional(),
+            client: Joi.string().required()
         });
         
         const {error, value} = Joi.validate(req.body, schema);
