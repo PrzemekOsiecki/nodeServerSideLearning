@@ -1,7 +1,7 @@
 import express from 'express';
 import clientController from './client.controller';
 
-export const clientRouter = express.ROuter();
+export const clientRouter = express.Router();
 
 clientRouter.route('/')
     .post(clientController.create)

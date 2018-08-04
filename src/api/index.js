@@ -5,4 +5,4 @@ import { clientRouter } from './resources/client';
 export const restRouter = express.Router();
 
 restRouter.use('/invoices', invoiceRouter);
-restRouter.use('/clients'/ clientRouter);
+restRouter.use('/clients', clientRouter);
