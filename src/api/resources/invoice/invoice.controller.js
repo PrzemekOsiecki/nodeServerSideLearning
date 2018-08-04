@@ -9,7 +9,8 @@ export default {
        const options = {
             //select: '_id, item',
             page: parseInt(page, 10),
-            limit: parseInt(perPage, 10)
+            limit: parseInt(perPage, 10),
+            populate: 'client', 
        };
 
        const query = {};
@@ -86,7 +87,8 @@ export default {
             due: Joi.date().optional(),
             qty: Joi.number().integer().optional(),
             tax: Joi.number().optional(),
-            rate: Joi.number().optional()
+            rate: Joi.number().optional(),
+            client: Joi.string().optional()
         });
         
         const {error, value} = Joi.validate(req.body, schema);
